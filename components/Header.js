@@ -18,6 +18,20 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle mobile navigation body class
+  useEffect(() => {
+    if (isMobileNavOpen) {
+      document.body.classList.add('mobile-nav-active');
+    } else {
+      document.body.classList.remove('mobile-nav-active');
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('mobile-nav-active');
+    };
+  }, [isMobileNavOpen]);
+
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
@@ -81,6 +95,43 @@ export default function Header() {
                 Contact
               </Link>
             </li>
+            {/* Language Selector for Mobile */}
+            <li className="mobile-language-selector d-xl-none">
+              <div className="language-dropdown-mobile">
+                <button
+                  className="language-toggle-mobile"
+                  onClick={toggleLanguage}
+                >
+                  <i className="bi bi-globe me-2"></i>
+                  <span>{currentLanguage === "en" ? "English" : "العربية"}</span>
+                  <i className="bi bi-chevron-down ms-2"></i>
+                </button>
+                {isLanguageOpen && (
+                  <ul className="language-options-mobile">
+                    <li>
+                      <button
+                        className={`language-option ${
+                          currentLanguage === "en" ? "active" : ""
+                        }`}
+                        onClick={() => selectLanguage("en")}
+                      >
+                        English
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className={`language-option ${
+                          currentLanguage === "ar" ? "active" : ""
+                        }`}
+                        onClick={() => selectLanguage("ar")}
+                      >
+                        العربية
+                      </button>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            </li>
           </ul>
           <i
             className={`mobile-nav-toggle d-xl-none ${
@@ -90,9 +141,9 @@ export default function Header() {
           ></i>
         </nav>
 
-        {/* Language Selector */}
+        {/* Language Selector - Desktop Only */}
         <div
-          className="language-selector dropdown mx-3"
+          className="language-selector dropdown mx-3 d-none d-xl-block"
           style={{ position: "relative" }}
         >
           <button
