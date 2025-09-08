@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import Image from "next/image";
 
-import Link from "next/link";
 import AOS from "aos";
-
-
 
 export default function Home() {
   const isotopeRef = useRef(null);
@@ -21,9 +19,6 @@ export default function Home() {
       once: true,
       mirror: false,
     });
-
-
-
 
     // Initialize Isotope
     const initIsotope = async () => {
@@ -80,7 +75,15 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="hero section dark-background"></section>
+      <section id="hero" className="relative w-full h-[700px]">
+        <Image
+          src="/img/pc-header.png"
+          alt="hero image"
+          fill
+          priority
+          className="object-cover"
+        />
+      </section>
 
       {/* Clients Section */}
       <section
@@ -292,19 +295,15 @@ export default function Home() {
       <section id="portfolio" className="portfolio section">
         <div className="container section-title" data-aos="fade-up">
           <h2>Portfolio</h2>
-       
         </div>
 
-        <div className="container">
-        
-        </div>
+        <div className="container"></div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="contact section">
         <div className="container section-title" data-aos="fade-up">
           <h2>Contact</h2>
-         
         </div>
 
         <div className="container" data-aos="fade-up" data-aos-delay="100">
