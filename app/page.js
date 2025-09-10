@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Image from "next/image";
@@ -10,8 +10,38 @@ import AOS from "aos";
 export default function Home() {
   const isotopeRef = useRef(null);
   const swiperRef = useRef(null);
+  const [screenSize, setScreenSize] = useState('desktop');
+
+  // Function to determine screen size and appropriate image
+  const getResponsiveImage = () => {
+    if (screenSize === 'mobile') {
+      return '/img/header-mobile.jpg';
+    } else if (screenSize === 'tablet') {
+      return '/img/header-tablet.jpg';
+    } else {
+      return '/img/header-pc.jpg';
+    }
+  };
 
   useEffect(() => {
+    // Function to handle screen size changes
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setScreenSize('mobile');
+      } else if (width < 1024) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+
+    // Set initial screen size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
     // Initialize AOS
     AOS.init({
       duration: 1000,
@@ -61,6 +91,9 @@ export default function Home() {
     initIsotope();
 
     return () => {
+      // Clean up event listener
+      window.removeEventListener('resize', handleResize);
+      
       if (swiperRef.current) {
         swiperRef.current.destroy();
         swiperRef.current = null;
@@ -75,9 +108,9 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative w-full h-[700px]">
+      <section id="hero" className="relative w-full h-[800px]">
         <Image
-          src="/img/pc-header.png"
+          src={getResponsiveImage()}
           alt="hero image"
           fill
           priority
