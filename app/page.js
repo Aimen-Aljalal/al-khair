@@ -159,7 +159,7 @@ export default function Home() {
               >
                 شركة الخير
               </span>
-              <span style={{ fontSize: "0.8em", opacity: "0.9", marginRight: "8px" }}>
+              <span style={{ fontSize: "0.8em", opacity: "0.9", marginRight: "8px", color: "white" }}>
                 للمقاولات وتوريد وتمويل الشركات
               </span>
             </h1>
