@@ -8,18 +8,26 @@ import Image from "next/image";
 import AOS from "aos";
 
 export default function Home() {
+  // Add Google Fonts for Arabic text
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Scheherazade+New:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+  }, []);
   const isotopeRef = useRef(null);
   const swiperRef = useRef(null);
-  const [screenSize, setScreenSize] = useState('desktop');
+  const [screenSize, setScreenSize] = useState("desktop");
 
   // Function to determine screen size and appropriate image
   const getResponsiveImage = () => {
-    if (screenSize === 'mobile') {
-      return '/img/header-mobile.jpg';
-    } else if (screenSize === 'tablet') {
-      return '/img/header-tablet.jpg';
+    if (screenSize === "mobile") {
+      return "/img/header-mobile.png";
+    } else if (screenSize === "tablet") {
+      return "/img/header-tablet.png";
     } else {
-      return '/img/header-pc.jpg';
+      return "/img/header-pc.png";
     }
   };
 
@@ -27,12 +35,12 @@ export default function Home() {
     // Function to handle screen size changes
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 768) {
-        setScreenSize('mobile');
-      } else if (width < 1024) {
-        setScreenSize('tablet');
+      if (width < 600) {
+        setScreenSize("mobile");
+      } else if (width < 850) {
+        setScreenSize("tablet");
       } else {
-        setScreenSize('desktop');
+        setScreenSize("desktop");
       }
     };
 
@@ -40,7 +48,7 @@ export default function Home() {
     handleResize();
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Initialize AOS
     AOS.init({
@@ -92,8 +100,8 @@ export default function Home() {
 
     return () => {
       // Clean up event listener
-      window.removeEventListener('resize', handleResize);
-      
+      window.removeEventListener("resize", handleResize);
+
       if (swiperRef.current) {
         swiperRef.current.destroy();
         swiperRef.current = null;
@@ -108,14 +116,68 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="relative w-full h-[800px]">
-        <Image
-          src={getResponsiveImage()}
-          alt="hero image"
-          fill
-          priority
-          className="object-cover"
-        />
+      <section
+        id="hero"
+        className="h-screen min-h-screen grid grid-cols-12 relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${getResponsiveImage()})`,
+        }}
+      >
+        {/* Text Content - Columns 7-12 on desktop, full width on mobile */}
+        <div className="col-span-12 md:col-start-7 md:col-end-12 flex items-center justify-center md:justify-end p-4 md:p-8">
+          <div
+            className="text-center md:text-right text-white"
+             style={{
+               marginLeft:
+                 screenSize === "mobile"
+                   ? "50px"
+                   : screenSize === "tablet"
+                   ? "100px"
+                   : "300px",
+             }}
+          >
+            <h1
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight"
+              style={{
+                fontFamily: "'Cairo', 'Tajawal', 'Arial Black', sans-serif",
+                textShadow:
+                  "4px 4px 8px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7)",
+                letterSpacing: "0.5px",
+                marginBottom: "50px"
+              }}
+            >
+              <span 
+                style={{
+                  fontFamily: "'Dancing Script', 'Pacifico', 'Brush Script MT', cursive",
+                  fontSize: "1.4em",
+                  fontWeight: "700",
+                  textShadow: "4px 4px 8px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7)",
+                  letterSpacing: "1.5px",
+                  color: "rgb(238, 186, 84)",
+                  textStroke: "1px rgba(255,255,255,0.2)"
+                }}
+              >
+                شركة الخير
+              </span>
+              <span style={{ fontSize: "0.8em", opacity: "0.9", marginRight: "8px" }}>
+                للمقاولات وتوريد وتمويل الشركات
+              </span>
+            </h1>
+            <p
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-relaxed"
+              style={{
+                fontFamily:
+                  "'Amiri', 'Scheherazade New', 'Times New Roman', serif",
+                textShadow:
+                  "3px 3px 6px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6)",
+                letterSpacing: "0.3px",
+              }}
+            >
+              نسعى لبناء سمعة متميزة وحضور قوي عبر بيئة عمل احترافية وهيكل إداري
+              مرن
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Clients Section */}
