@@ -150,19 +150,20 @@ export default function Home() {
                   fontFamily:
                     "'Noto Naskh Arabic', 'Cairo', 'Tajawal', sans-serif",
                   fontSize: "1.4em",
-                  fontWeight: "700",
                   letterSpacing: "1.5px",
                   color: "white",
                 }}
               >
-                شركة الخير للمقاولات وتوريد وتمويل الشركات
+                <span style={{ fontWeight: "700" }}>شركة الخير</span>{" "}
+                <span style={{ fontWeight: "400" }}>للمقاولات وتوريد وتمويل الشركات</span>
               </span>
             </h1>
             <p
-              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed"
               style={{
                 fontFamily:
                   "'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Times New Roman', serif",
+                fontWeight: "300",
                 letterSpacing: "0.3px",
               }}
             >
