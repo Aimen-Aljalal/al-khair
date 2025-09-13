@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
-      "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Scheherazade+New:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap";
+      "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Scheherazade+New:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
@@ -127,49 +127,42 @@ export default function Home() {
         <div className="col-span-12 md:col-start-7 md:col-end-12 flex items-center justify-center md:justify-end p-4 md:p-8">
           <div
             className="text-center md:text-right text-white"
-             style={{
-               marginLeft:
-                 screenSize === "mobile"
-                   ? "50px"
-                   : screenSize === "tablet"
-                   ? "100px"
-                   : "300px",
-             }}
+            style={{
+              marginLeft:
+                screenSize === "mobile"
+                  ? "50px"
+                  : screenSize === "tablet"
+                  ? "100px"
+                  : "300px",
+            }}
           >
             <h1
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight"
               style={{
-                fontFamily: "'Cairo', 'Tajawal', 'Arial Black', sans-serif",
-                textShadow:
-                  "4px 4px 8px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7)",
+                fontFamily:
+                  "'Noto Naskh Arabic', 'Cairo', 'Tajawal', 'Arial Black', sans-serif",
                 letterSpacing: "0.5px",
-                marginBottom: "50px"
+                marginBottom: "50px",
               }}
             >
-              <span 
+              <span
                 style={{
-                  fontFamily: "'Dancing Script', 'Pacifico', 'Brush Script MT', cursive",
+                  fontFamily:
+                    "'Noto Naskh Arabic', 'Cairo', 'Tajawal', sans-serif",
                   fontSize: "1.4em",
                   fontWeight: "700",
-                  textShadow: "4px 4px 8px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7)",
                   letterSpacing: "1.5px",
-                  color: "rgb(238, 186, 84)",
-                  textStroke: "1px rgba(255,255,255,0.2)"
+                  color: "white",
                 }}
               >
-                شركة الخير
-              </span>
-              <span style={{ fontSize: "0.8em", opacity: "0.9", marginRight: "8px", color: "white" }}>
-                للمقاولات وتوريد وتمويل الشركات
+                شركة الخير للمقاولات وتوريد وتمويل الشركات
               </span>
             </h1>
             <p
               className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-relaxed"
               style={{
                 fontFamily:
-                  "'Amiri', 'Scheherazade New', 'Times New Roman', serif",
-                textShadow:
-                  "3px 3px 6px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6)",
+                  "'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', 'Times New Roman', serif",
                 letterSpacing: "0.3px",
               }}
             >
@@ -342,7 +335,6 @@ export default function Home() {
                     background: "#fff",
                     padding: "30px 20px",
                     borderRadius: "12px",
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
