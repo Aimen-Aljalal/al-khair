@@ -154,7 +154,7 @@ export default function Home() {
                   color: "white",
                 }}
               >
-                <span style={{ fontWeight: "700" }}>شركة الخير</span>{" "}
+                 <span style={{ fontWeight: "700", letterSpacing: "0.3em" }}>شــركــــة الخــــيــر</span>{" "}
                 <span style={{ fontWeight: "400" }}>للمقاولات وتوريد وتمويل الشركات</span>
               </span>
             </h1>
