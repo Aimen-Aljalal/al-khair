@@ -104,10 +104,6 @@ export default function Footer() {
               <li>
                 <i className="bi bi-chevron-right"></i> Project Financing
               </li>
-              <li>
-                <i className="bi bi-chevron-right"></i> Engineering & Management
-                Consulting
-              </li>
             </ul>
           </div>
 
