@@ -26,7 +26,7 @@ export default function AdminPage() {
   const verifyToken = async () => {
     try {
       const token = localStorage.getItem("adminToken");
-      const response = await fetch("http://localhost:4444/api/auth/verify", {
+      const response = await fetch("/api/auth/verify", {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
