@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("en"); // 'en' or 'ar'
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +19,34 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Check if admin is logged in
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const token = localStorage.getItem("adminToken");
+      if (token) {
+        setIsAdminLoggedIn(true);
+      } else {
+        setIsAdminLoggedIn(false);
+      }
+    };
+
+    // Check on mount
+    checkAuthStatus();
+
+    // Listen for storage changes (when login/logout happens in other tabs)
+    window.addEventListener('storage', checkAuthStatus);
+
+    // Listen for custom events (when login/logout happens in same tab)
+    window.addEventListener('adminLogin', checkAuthStatus);
+    window.addEventListener('adminLogout', checkAuthStatus);
+
+    return () => {
+      window.removeEventListener('storage', checkAuthStatus);
+      window.removeEventListener('adminLogin', checkAuthStatus);
+      window.removeEventListener('adminLogout', checkAuthStatus);
+    };
   }, []);
 
   // Handle mobile navigation body class
@@ -45,6 +76,14 @@ export default function Header() {
     setIsLanguageOpen(false);
     // Here you would typically handle language change in your app
     // For now, we're just updating the state
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    setIsAdminLoggedIn(false);
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('adminLogout'));
+    router.push("/");
   };
 
   return (
@@ -95,6 +134,58 @@ export default function Header() {
                 Contact
               </Link>
             </li>
+            {isAdminLoggedIn && (
+              <li>
+                <Link href="/admin" className="no-underline" style={{
+                  background: 'linear-gradient(135deg, #9333ea, #ec4899)',
+                  color: 'white',
+                  padding: '8px 16px',
+                  borderRadius: '20px',
+                  fontWeight: '500',
+                  transition: 'all 0.3s',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.boxShadow = '0 4px 15px rgba(147, 51, 234, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.boxShadow = 'none';
+                }}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
+            {isAdminLoggedIn && (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  style={{
+                    background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                    color: 'white',
+                    padding: '8px 16px',
+                    borderRadius: '20px',
+                    fontWeight: '500',
+                    transition: 'all 0.3s',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.boxShadow = '0 4px 15px rgba(239, 68, 68, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            )}
             {/* Language Selector for Mobile */}
             <li className="mobile-language-selector d-xl-none">
               <div className="language-dropdown-mobile">
