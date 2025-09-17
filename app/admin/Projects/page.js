@@ -140,7 +140,7 @@ export default function ProjectsPage() {
         image: imageUrl
       };
 
-      const response = await fetch(`/api/projects/${editingProject._id}`, {
+      const response = await fetch(`https://khair-backend-n1g8.onrender.com/api/projects/${editingProject._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
