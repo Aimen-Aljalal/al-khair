@@ -3,6 +3,84 @@
 @tailwind utilities;
 
 /*--------------------------------------------------------------
+# RTL Support
+--------------------------------------------------------------*/
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .navmenu ul {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navmenu ul li {
+  margin-left: 30px;
+  margin-right: 0;
+}
+
+[dir="rtl"] .navmenu ul li:first-child {
+  margin-left: 0;
+}
+
+[dir="rtl"] .language-selector {
+  order: -1;
+}
+
+[dir="rtl"] .logo {
+  order: 1;
+}
+
+[dir="rtl"] .container-fluid {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .me-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+[dir="rtl"] .ms-1 {
+  margin-left: 0 !important;
+  margin-right: 0.25rem !important;
+}
+
+[dir="rtl"] .ms-2 {
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .me-1 {
+  margin-right: 0 !important;
+  margin-left: 0.25rem !important;
+}
+
+[dir="rtl"] .me-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-end {
+  text-align: left !important;
+}
+
+[dir="rtl"] .dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .bi-chevron-right::before {
+  content: "\f284";
+}
+
+[dir="rtl"] .bi-chevron-left::before {
+  content: "\f285";
+}
+
+/*--------------------------------------------------------------
 # CSS Reset & Base Styles
 --------------------------------------------------------------*/
 * {

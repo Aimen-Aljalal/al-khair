@@ -1,0 +1,101 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  },
+  "sections": {
+    "hero": {
+      "companyName": "Al-Khair Company",
+      "companySubtitle": "for Contracting, Supply and Corporate Financing",
+      "description": "We strive to build a distinguished reputation and strong presence through a professional work environment and flexible administrative structure"
+    },
+    "about": {
+      "title": "About Us",
+      "description1": "Al-Khair Contracting, Supplies, and Corporate Financing is a leading company providing comprehensive services to businesses in contracting, supplies, and financial support. We are committed to delivering innovative and effective solutions that meet our clients' needs and support the growth of their projects.",
+      "description2": "At Al-Khair, we strive to deliver reliable and comprehensive services to all our clients through a specialized team with extensive experience in contracting, supplies, and financing. Our goal is to build long-term partnerships that ensure project success and client satisfaction.",
+      "features": {
+        "contracting": "Executing contracting projects with high efficiency and quality.",
+        "supplies": "Providing the necessary supplies to businesses and organizations at competitive prices.",
+        "financing": "Supporting and financing projects to help clients achieve their financial goals."
+      }
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "We provide comprehensive solutions in contracting, supplies, and corporate financing to help businesses grow and succeed.",
+      "items": {
+        "contracting": {
+          "title": "Contracting Projects",
+          "description": "Executing construction and contracting projects with high efficiency and top-quality standards."
+        },
+        "supplies": {
+          "title": "Supplies & Procurement",
+          "description": "Providing essential supplies and equipment to businesses and organizations at competitive prices."
+        },
+        "financing": {
+          "title": "Corporate Financing",
+          "description": "Offering financing solutions to support projects and help clients achieve their financial objectives."
+        },
+        "support": {
+          "title": "Business Support",
+          "description": "Providing expert consultation and long-term business support to ensure project success and client satisfaction."
+        }
+      }
+    },
+    "projects": {
+      "title": "Our Projects",
+      "subtitle": "Explore our latest projects and achievements in contracting, supplies, and corporate financing."
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Address",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "sendMessage": "Send Message",
+      "sending": "Sending...",
+      "addressText": "Republic of Yemen, Sana'a",
+      "phone": "+967 777 733 340",
+      "emailAddress": "Adelmosleh66@gmail.com"
+    }
+  },
+  "projects": {
+    "loading": "Loading projects...",
+    "noProjects": "No projects available at the moment.",
+    "viewDetails": "View Details",
+    "loadMore": "Load More Projects",
+    "remaining": "remaining"
+  },
+  "footer": {
+    "ourServices": "Our Services",
+    "home": "Home",
+    "aboutUs": "About us",
+    "services": "Services",
+    "contact": "Contact",
+    "usefulLinks": "Useful Links",
+    "followUs": "Follow Us",
+    "followUsDescription": "Connect with us on social media for the latest updates and news",
+    "copyright": "Copyright",
+    "allRightsReserved": "All Rights Reserved",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Republic of Yemen",
+    "city": "Sana'a",
+    "servicesList": {
+      "contracting": "General Contracting",
+      "supplies": "Supply of Materials & Equipment",
+      "financing": "Project Financing"
+    }
+  },
+  "language": {
+    "english": "English",
+    "arabic": "العربية"
+  }
+}

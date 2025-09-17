@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation('common');
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -58,59 +60,58 @@ export default function Footer() {
               <span className="sitename">Al-Khair</span>
             </Link>
             <div className="footer-contact pt-3">
-              <p>somwhere</p>
-              <p>somwhere</p>
+              <p>{t('footer.address')}</p>
+              <p>{t('footer.city')}</p>
               <p className="mt-3">
-                <strong>Phone:</strong> <span>+967 777 733 340</span>
+                <strong>{t('footer.phone')}:</strong> <span>+967 777 733 340</span>
               </p>
               <p>
-                <strong>Email:</strong> <span>Adelmosleh66@gmail.com</span>
+                <strong>{t('footer.email')}:</strong> <span>Adelmosleh66@gmail.com</span>
               </p>
             </div>
           </div>
 
           <div className="col-lg-2 col-md-3 footer-links">
-            <h4>Useful Links</h4>
+            <h4>{t('footer.usefulLinks')}</h4>
             <ul>
               <li>
                 <i className="bi bi-chevron-right"></i>{" "}
-                <Link href="/">Home</Link>
+                <Link href="/">{t('footer.home')}</Link>
               </li>
               <li>
                 <i className="bi bi-chevron-right"></i>{" "}
-                <Link href="/#about">About us</Link>
+                <Link href="/#about">{t('footer.aboutUs')}</Link>
               </li>
               <li>
                 <i className="bi bi-chevron-right"></i>{" "}
-                <Link href="/#services">Services</Link>
+                <Link href="/#services">{t('footer.services')}</Link>
               </li>
               <li>
                 <i className="bi bi-chevron-right"></i>{" "}
-                <Link href="/#contact">Contact</Link>
+                <Link href="/#contact">{t('footer.contact')}</Link>
               </li>
             </ul>
           </div>
 
           <div className="col-lg-2 col-md-3 footer-links">
-            <h4>Our Services</h4>
+            <h4>{t('footer.ourServices')}</h4>
             <ul>
               <li>
-                <i className="bi bi-chevron-right"></i> General Contracting
+                <i className="bi bi-chevron-right"></i> {t('footer.servicesList.contracting')}
               </li>
               <li>
-                <i className="bi bi-chevron-right"></i> Supply of Materials &
-                Equipment
+                <i className="bi bi-chevron-right"></i> {t('footer.servicesList.supplies')}
               </li>
               <li>
-                <i className="bi bi-chevron-right"></i> Project Financing
+                <i className="bi bi-chevron-right"></i> {t('footer.servicesList.financing')}
               </li>
             </ul>
           </div>
 
           <div className="col-lg-4 col-md-12">
-            <h4>Follow Us</h4>
+            <h4>{t('footer.followUs')}</h4>
             <p>
-              Connect with us on social media for the latest updates and news
+              {t('footer.followUsDescription')}
             </p>
             <div className="social-links d-flex">
               <a
@@ -148,9 +149,9 @@ export default function Footer() {
 
       <div className="container copyright text-center mt-4">
         <p>
-          © <span>Copyright</span>{" "}
+          © <span>{t('footer.copyright')}</span>{" "}
           <strong className="px-1 sitename">Al-Khair</strong>{" "}
-          <span>All Rights Reserved</span>
+          <span>{t('footer.allRightsReserved')}</span>
         </p>
       </div>
     </footer>

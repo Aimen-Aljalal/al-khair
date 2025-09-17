@@ -4,14 +4,22 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t, i18n } = useTranslation('common');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState("en"); // 'en' or 'ar'
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || "en"); // 'en' or 'ar'
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const router = useRouter();
+
+  // Update document direction based on language
+  useEffect(() => {
+    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = currentLanguage;
+  }, [currentLanguage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,8 +82,7 @@ export default function Header() {
   const selectLanguage = (lang) => {
     setCurrentLanguage(lang);
     setIsLanguageOpen(false);
-    // Here you would typically handle language change in your app
-    // For now, we're just updating the state
+    i18n.changeLanguage(lang);
   };
 
   const handleLogout = () => {
@@ -94,7 +101,7 @@ export default function Header() {
       }`}
     >
       <div className="container-fluid container-xl position-relative d-flex align-items-center">
-        <Link href="/" className="logo d-flex align-items-center me-auto">
+        <Link href="/" className={`logo d-flex align-items-center ${currentLanguage === 'ar' ? 'ms-auto' : 'me-auto'}`}>
           <Image
             src="/img/logo.jpg" // مسار الصورة داخل مجلد public
             alt="Logo"
@@ -111,27 +118,27 @@ export default function Header() {
           <ul>
             <li>
               <Link href="/#hero" className="active no-underline">
-                Home
+                {t('navigation.home')}
               </Link>
             </li>
             <li>
               <Link href="/#about" className="no-underline">
-                About
+                {t('navigation.about')}
               </Link>
             </li>
             <li>
               <Link href="/#services" className="no-underline">
-                Services
+                {t('navigation.services')}
               </Link>
             </li>
             <li>
               <Link href="/#portfolio" className="no-underline">
-                Portfolio
+                {t('navigation.portfolio')}
               </Link>
             </li>
             <li>
               <Link href="/#contact" className="no-underline">
-                Contact
+                {t('navigation.contact')}
               </Link>
             </li>
             {isAdminLoggedIn && (
@@ -154,7 +161,7 @@ export default function Header() {
                   e.target.style.boxShadow = 'none';
                 }}
                 >
-                  Dashboard
+                  {t('navigation.dashboard')}
                 </Link>
               </li>
             )}
@@ -182,7 +189,7 @@ export default function Header() {
                     e.target.style.boxShadow = 'none';
                   }}
                 >
-                  Logout
+                  {t('navigation.logout')}
                 </button>
               </li>
             )}
@@ -194,7 +201,7 @@ export default function Header() {
                   onClick={toggleLanguage}
                 >
                   <i className="bi bi-globe me-2"></i>
-                  <span>{currentLanguage === "en" ? "English" : "العربية"}</span>
+                  <span>{currentLanguage === "en" ? t('language.english') : t('language.arabic')}</span>
                   <i className="bi bi-chevron-down ms-2"></i>
                 </button>
                 {isLanguageOpen && (
@@ -206,7 +213,7 @@ export default function Header() {
                         }`}
                         onClick={() => selectLanguage("en")}
                       >
-                        English
+                        {t('language.english')}
                       </button>
                     </li>
                     <li>
@@ -216,7 +223,7 @@ export default function Header() {
                         }`}
                         onClick={() => selectLanguage("ar")}
                       >
-                        العربية
+                        {t('language.arabic')}
                       </button>
                     </li>
                   </ul>
@@ -234,7 +241,7 @@ export default function Header() {
 
         {/* Language Selector - Desktop Only */}
         <div
-          className="language-selector dropdown mx-3 d-none d-xl-block"
+          className={`language-selector dropdown mx-3 d-none d-xl-block ${currentLanguage === 'ar' ? 'order-first' : ''}`}
           style={{ position: "relative" }}
         >
           <button
@@ -250,7 +257,7 @@ export default function Header() {
             }}
           >
             <i className="bi bi-globe me-1"></i>
-            <span>{currentLanguage === "en" ? "English" : "العربية"}</span>
+            <span>{currentLanguage === "en" ? t('language.english') : t('language.arabic')}</span>
             <i className="bi bi-chevron-down ms-1"></i>
           </button>
           {isLanguageOpen && (
@@ -284,7 +291,7 @@ export default function Header() {
                     cursor: "pointer",
                   }}
                 >
-                  English
+                  {t('language.english')}
                 </button>
               </li>
               <li>
@@ -302,7 +309,7 @@ export default function Header() {
                     cursor: "pointer",
                   }}
                 >
-                  العربية
+                  {t('language.arabic')}
                 </button>
               </li>
             </ul>
