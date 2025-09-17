@@ -10,7 +10,7 @@ export default function AdminPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if admin is logged in
+    
     const token = localStorage.getItem("adminToken");
     const admin = localStorage.getItem("adminData");
 
@@ -19,7 +19,7 @@ export default function AdminPage() {
       return;
     }
 
-    // Verify token with backend
+    
     verifyToken();
   }, [router]);
 
@@ -37,7 +37,7 @@ export default function AdminPage() {
       if (data.success) {
         setAdminData(data.admin);
       } else {
-        // Token is invalid, redirect to login
+        
         localStorage.removeItem("adminToken");
         localStorage.removeItem("adminData");
         router.push("/login");
@@ -55,7 +55,7 @@ export default function AdminPage() {
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminData");
-    // Dispatch custom event to notify other components
+    
     window.dispatchEvent(new CustomEvent('adminLogout'));
     router.push("/login");
   };
@@ -330,3 +330,4 @@ export default function AdminPage() {
     </div>
   );
 }
+

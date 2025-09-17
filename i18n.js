@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Import translation files
+
 import enCommon from './locales/en/common.json';
 import arCommon from './locales/ar/common.json';
 
@@ -18,12 +18,12 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // default language
+    lng: 'en', 
     fallbackLng: 'en',
     debug: false,
     
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false, 
     },
     
     react: {
@@ -32,3 +32,4 @@ i18n
   });
 
 export default i18n;
+

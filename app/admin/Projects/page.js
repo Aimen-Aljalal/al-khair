@@ -118,7 +118,7 @@ export default function ProjectsPage() {
       const token = localStorage.getItem("adminToken");
       let imageUrl = editingProject.image;
 
-      // Upload new image if provided
+      
       if (editFormData.image) {
         const imageFormData = new FormData();
         imageFormData.append("image", editFormData.image);
@@ -152,7 +152,7 @@ export default function ProjectsPage() {
       const data = await response.json();
 
       if (data.success) {
-        // Update the project in the list
+        
         setProjects(projects.map(project => 
           project._id === editingProject._id 
             ? { ...project, ...data.project }
@@ -712,3 +712,4 @@ export default function ProjectsPage() {
     </>
   );
 }
+

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:4444';
+    const backendUrl = process.env.BACKEND_URL || 'https://khair-backend-n1g8.onrender.com';
     return [
       {
         source: '/api/:path*',

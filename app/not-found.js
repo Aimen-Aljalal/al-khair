@@ -7,7 +7,7 @@ export default function NotFound() {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    // Initialize AOS
+    
     const AOS = require('aos')
     AOS.init({
       duration: 1000,
@@ -19,7 +19,7 @@ export default function NotFound() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    // Implement search functionality
+    
     console.log('Search query:', searchQuery)
   }
 
@@ -85,3 +85,4 @@ export default function NotFound() {
     </main>
   )
 }
+

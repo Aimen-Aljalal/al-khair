@@ -11,11 +11,10 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || "en"); // 'en' or 'ar'
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || "en");
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const router = useRouter();
 
-  // Update document direction based on language
   useEffect(() => {
     document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = currentLanguage;
@@ -29,7 +28,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Check if admin is logged in
   useEffect(() => {
     const checkAuthStatus = () => {
       const token = localStorage.getItem("adminToken");
@@ -40,13 +38,10 @@ export default function Header() {
       }
     };
 
-    // Check on mount
     checkAuthStatus();
 
-    // Listen for storage changes (when login/logout happens in other tabs)
     window.addEventListener('storage', checkAuthStatus);
 
-    // Listen for custom events (when login/logout happens in same tab)
     window.addEventListener('adminLogin', checkAuthStatus);
     window.addEventListener('adminLogout', checkAuthStatus);
 
@@ -57,7 +52,6 @@ export default function Header() {
     };
   }, []);
 
-  // Handle mobile navigation body class
   useEffect(() => {
     if (isMobileNavOpen) {
       document.body.classList.add('mobile-nav-active');
@@ -65,7 +59,6 @@ export default function Header() {
       document.body.classList.remove('mobile-nav-active');
     }
     
-    // Cleanup on unmount
     return () => {
       document.body.classList.remove('mobile-nav-active');
     };
@@ -88,7 +81,6 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     setIsAdminLoggedIn(false);
-    // Dispatch custom event to notify other components
     window.dispatchEvent(new CustomEvent('adminLogout'));
     router.push("/");
   };
@@ -103,7 +95,7 @@ export default function Header() {
       <div className="container-fluid container-xl position-relative d-flex align-items-center">
         <Link href="/" className={`logo d-flex align-items-center ${currentLanguage === 'ar' ? 'ms-auto' : 'me-auto'}`}>
           <Image
-            src="/img/logo.jpg" // مسار الصورة داخل مجلد public
+            src="/img/logo.jpg"
             alt="Logo"
             width={250}
             height={135}

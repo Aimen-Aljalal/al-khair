@@ -21,3 +21,4 @@ export default function I18nProvider({ children }) {
     </I18nextProvider>
   );
 }
+

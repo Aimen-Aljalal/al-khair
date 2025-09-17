@@ -13,12 +13,10 @@ export default function Home() {
   const { t, i18n } = useTranslation("common");
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language || "en");
 
-  // Update currentLanguage when i18n language changes
   useEffect(() => {
     setCurrentLanguage(i18n.language);
   }, [i18n.language]);
 
-  // Add Google Fonts for Arabic text
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
@@ -30,7 +28,6 @@ export default function Home() {
   const swiperRef = useRef(null);
   const [screenSize, setScreenSize] = useState("desktop");
 
-  // Contact form state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,7 +37,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
 
-  // Contact form handlers
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -54,7 +50,7 @@ export default function Home() {
     setMessage(null);
 
     try {
-      const response = await fetch("http://localhost:4444/api/contact", {
+      const response = await fetch("https://khair-backend-n1g8.onrender.com/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +76,6 @@ export default function Home() {
     }
   };
 
-  // Function to determine screen size and appropriate image
   const getResponsiveImage = () => {
     if (screenSize === "mobile") {
       return "/img/header-mobile.png";
@@ -92,7 +87,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // Function to handle screen size changes
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 600) {
@@ -106,13 +100,10 @@ export default function Home() {
       }
     };
 
-    // Set initial screen size
     handleResize();
 
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Initialize AOS
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
@@ -120,7 +111,6 @@ export default function Home() {
       mirror: false,
     });
 
-    // Initialize Isotope
     const initIsotope = async () => {
       if (typeof window !== "undefined") {
         const Isotope = (await import("isotope-layout")).default;
@@ -161,7 +151,6 @@ export default function Home() {
     initIsotope();
 
     return () => {
-      // Clean up event listener
       window.removeEventListener("resize", handleResize);
 
       if (swiperRef.current) {
