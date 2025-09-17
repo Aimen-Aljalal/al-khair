@@ -132,7 +132,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/#portfolio" className="no-underline">
+              <Link href="/#projects" className="no-underline">
                 {t('navigation.portfolio')}
               </Link>
             </li>
