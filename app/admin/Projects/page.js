@@ -29,7 +29,7 @@ export default function ProjectsPage() {
         return;
       }
 
-      const response = await fetch("/api/projects", {
+      const response = await fetch("https://khair-backend-n1g8.onrender.com/api/projects", {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
         const imageFormData = new FormData();
         imageFormData.append("image", editFormData.image);
 
-        const uploadResponse = await fetch("/api/upload", {
+        const uploadResponse = await fetch("https://khair-backend-n1g8.onrender.com/api/upload", {
           method: "POST",
           body: imageFormData,
         });

@@ -18,7 +18,7 @@ export default function ProjectsSection() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("/api/projects/public");
+      const response = await fetch("https://khair-backend-n1g8.onrender.com/api/projects/public");
       const data = await response.json();
 
       if (data.success) {

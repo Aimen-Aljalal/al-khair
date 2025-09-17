@@ -26,7 +26,7 @@ export default function AdminPage() {
   const verifyToken = async () => {
     try {
       const token = localStorage.getItem("adminToken");
-      const response = await fetch("/api/auth/verify", {
+      const response = await fetch("https://khair-backend-n1g8.onrender.com/api/auth/verify", {
         headers: {
           "Authorization": `Bearer ${token}`,
         },

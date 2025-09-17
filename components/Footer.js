@@ -17,7 +17,7 @@ export default function Footer() {
 
     try {
       // Replace with your actual newsletter API endpoint
-      const response = await fetch("/api/newsletter", {
+      const response = await fetch("https://khair-backend-n1g8.onrender.com/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
